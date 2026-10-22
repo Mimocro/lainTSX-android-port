@@ -1,0 +1,10 @@
+.git
+**/.git
+disks
+out
+lainTSX/node_modules
+lainTSX/dist
+lainTSX/scripts/discs
+app/build
+app/.gradle
+app/src/main/assets

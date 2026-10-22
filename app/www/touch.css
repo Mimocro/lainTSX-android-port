@@ -1,0 +1,44 @@
+#main-canvas {
+    width: min(100vw, calc(100vh * 4 / 3)) !important;
+    height: min(100vh, calc(100vw * 3 / 4)) !important;
+}
+
+html, body {
+    overflow: hidden;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+#touch-pad {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+#touch-pad button {
+    position: absolute;
+    pointer-events: auto;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.6);
+    font: bold 20px sans-serif;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+#touch-pad button.on {
+    background: rgba(255, 165, 49, 0.45);
+}
+
+#touch-pad button.shoulder,
+#touch-pad button.small {
+    border-radius: 10px;
+    width: 64px;
+    height: 34px;
+    font-size: 14px;
+}

@@ -1,0 +1,24 @@
+services:
+  web:
+    build:
+      context: .
+      target: web
+    volumes:
+      - ./disks:/disks:ro
+      - www:/www
+
+  apk:
+    build:
+      context: .
+      target: apk
+    depends_on:
+      web:
+        condition: service_completed_successfully
+    volumes:
+      - www:/www:ro
+      - gradle:/root/.gradle
+      - ./out:/out
+
+volumes:
+  www:
+  gradle:

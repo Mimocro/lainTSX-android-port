@@ -1,2 +1,6 @@
 /disks/disk1.bin
 /disks/disk2.bin
+/out/
+/app/build/
+/app/.gradle/
+/app/src/main/assets/
