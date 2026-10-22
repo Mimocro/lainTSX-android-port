@@ -11,13 +11,14 @@ COPY docker/web.sh /web.sh
 CMD ["sh", "/web.sh"]
 
 FROM eclipse-temurin:17-jdk AS apk
+ARG JAVA_TOOL_OPTIONS
 ENV ANDROID_HOME=/opt/android-sdk
 RUN apt-get update && apt-get install -y --no-install-recommends unzip wget && rm -rf /var/lib/apt/lists/*
 RUN wget -q https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip -O /tmp/t.zip \
  && mkdir -p $ANDROID_HOME/cmdline-tools && unzip -q /tmp/t.zip -d $ANDROID_HOME/cmdline-tools \
  && mv $ANDROID_HOME/cmdline-tools/cmdline-tools $ANDROID_HOME/cmdline-tools/latest && rm /tmp/t.zip \
  && yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses >/dev/null \
- && $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "platforms;android-34" "build-tools;34.0.0" >/dev/null
+ && $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "platforms;android-34" "build-tools;34.0.0" "platform-tools" >/dev/null
 RUN wget -q https://services.gradle.org/distributions/gradle-8.7-bin.zip -O /tmp/g.zip \
  && unzip -q /tmp/g.zip -d /opt && rm /tmp/g.zip
 ENV PATH=/opt/gradle-8.7/bin:$PATH

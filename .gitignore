@@ -4,3 +4,4 @@
 /app/build/
 /app/.gradle/
 /app/src/main/assets/
+compose.local.yaml
