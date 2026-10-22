@@ -7,7 +7,7 @@ Easy to build wrapper to run [lainTSX](https://github.com/ad044/lainTSX) on andr
 - clone this repo with `git clone https://github.com/Mimocro/lainTSX-android-port --recursive`
 - place the `disk1.bin` and `disk2.bin` of the original psx game into the `disks` folder
 - run `docker compose up --build`
-- `out/lain.apk` will be built
+- `out/lainTSX.apk` will be built
 
 ## Why
 
