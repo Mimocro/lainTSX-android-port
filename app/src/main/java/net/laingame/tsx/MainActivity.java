@@ -1,6 +1,7 @@
 package net.laingame.tsx;
 
 import android.app.Activity;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -18,6 +19,11 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle state) {
         super.onCreate(state);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            WindowManager.LayoutParams lp = getWindow().getAttributes();
+            lp.layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
+            getWindow().setAttributes(lp);
+        }
 
         if (server == null) {
             try {
@@ -56,13 +62,17 @@ public class MainActivity extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
+        web.evaluateJavascript("window.lainPause && lainPause()", null);
         web.onPause();
+        web.pauseTimers();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        web.resumeTimers();
         web.onResume();
+        web.evaluateJavascript("window.lainResume && lainResume()", null);
     }
 
     @Override

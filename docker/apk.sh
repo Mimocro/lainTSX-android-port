@@ -6,7 +6,7 @@ rm -rf "$ASSETS"
 mkdir -p "$ASSETS"
 cp -r /www/. "$ASSETS"/
 cp -r /app/www "$ASSETS"/mobile
-sed -i 's#</head>#<link rel="stylesheet" href="/mobile/touch.css"><script src="/mobile/touch.js" defer></script></head>#' "$ASSETS"/game.html
+sed -i 's#</head>#<script src="/mobile/background.js"></script><link rel="stylesheet" href="/mobile/touch.css"><script src="/mobile/touch.js" defer></script></head>#' "$ASSETS"/game.html
 
 mkdir -p /app/src/main/res/mipmap
 cp /www/images/icon.png /app/src/main/res/mipmap/ic_launcher.png
